@@ -28,10 +28,9 @@ public class YahooAnswerHelper {
 	private static String API_SECRET = "e23c1b9928c9eaab910e58159db865c8a257201b";
 	private static String QUESTION_SEARCH_URL = "http://answers.yahooapis.com/AnswersService/V1/questionSearch";
 	private static String QUESTION_DETAIL_URL = "http://answers.yahooapis.com/AnswersService/V1/getQuestion";
-	
+
 	public static List<YahooAnswer> getAnswers(YahooQuestion question) {
 		String question_id = question.Id;
-		
 		return getAnswers(question_id);
 	}
 
@@ -66,9 +65,9 @@ public class YahooAnswerHelper {
 				}
 			}
 		} catch (IOException e) {
-
+			e.printStackTrace();
 		}
-		
+
 		return answers;
 	}
 
@@ -103,7 +102,7 @@ public class YahooAnswerHelper {
 				}
 			}
 		} catch (IOException e) {
-
+			e.printStackTrace();
 		}
 
 		return questions;

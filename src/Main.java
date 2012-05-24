@@ -10,7 +10,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		List<YahooQuestion> questions = YahooAnswerHelper.searchQuestions("beaver");
-		YahooQuestion q = questions.get(0);
+		YahooQuestion q = questions.get(2);
 		
 		List<YahooAnswer> answers = YahooAnswerHelper.getAnswers(q);
 		
