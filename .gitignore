@@ -14,7 +14,6 @@ svn-commit*.tmp
 =======
 
 # Package Files #
-*.jar
 *.war
 *.ear
 >>>>>>> 14552a3a5c7a22fba1e72a1ec32c114a0ef3e004
