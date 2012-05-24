@@ -11,7 +11,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		List<YahooQuestion> questions = YahooAnswerHelper
-				.searchQuestions("organizations group hunger");
+				.searchQuestions("Jackie Robinson major league debut");
 
 //		for (YahooQuestion q : questions) {
 //			System.out.println("[Subject]");
