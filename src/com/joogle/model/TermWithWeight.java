@@ -1,20 +1,20 @@
 package com.joogle.model;
 
-public class TermWithFrequency implements Comparable<TermWithFrequency> {
+public class TermWithWeight implements Comparable<TermWithWeight> {
 	public String term;
 	public Integer freq;
 
-	public TermWithFrequency() {
+	public TermWithWeight() {
 
 	}
 
-	public TermWithFrequency(String term, Integer freq) {
+	public TermWithWeight(String term, Integer freq) {
 		this.term = term;
 		this.freq = freq;
 	}
 
 	@Override
-	public int compareTo(TermWithFrequency t) {
+	public int compareTo(TermWithWeight t) {
 		return (t.freq - this.freq);
 	}
 

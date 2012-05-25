@@ -25,7 +25,21 @@ public class Main {
 			prf_docs.add(answer);
 		}
 
-		
+		for (String doc : prf_docs) {
+			List<String> vector = TermRankingFunction.getMergedDocumentVector(doc);
+			
+			System.out.println(doc);
+			System.out.println("---------------------------------------");
+			
+			for (String s : vector) {
+				System.out.println(s);
+//				double score = TermRankingFunction.getRocchioWeight(s, doc, collection);
+				
+//				System.out.println(s + ":" + score);
+			}
+			
+			System.out.println();
+		}
 	}
 
 }
