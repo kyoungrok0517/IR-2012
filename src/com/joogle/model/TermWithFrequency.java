@@ -17,7 +17,7 @@ public class TermWithFrequency implements Comparable<TermWithFrequency> {
 	public int compareTo(TermWithFrequency t) {
 		return (t.freq - this.freq);
 	}
-	
+
 	public String toString() {
 		return term + ":" + freq;
 	}
