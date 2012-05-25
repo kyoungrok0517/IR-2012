@@ -1,12 +1,12 @@
+import java.util.ArrayList;
 import java.util.List;
 
+import com.joogle.model.TermWithFrequency;
 import com.joogle.model.YahooQuestion;
-import com.joogle.utility.PorterStemmer;
+import com.joogle.utility.TermRankingFunction;
 import com.joogle.utility.YahooAnswerHelper;
 
 public class Main {
-	private static PorterStemmer stemmer = new PorterStemmer();
-
 	/**
 	 * @param args
 	 */
@@ -23,7 +23,27 @@ public class Main {
 			collection += " " + q.ChosenAnswer;			
 		}
 		
-		System.out.println(collection);
+		// the relevant documents are chosen answers (treated as individual document)
+		List<String> all_documents = new ArrayList<String>();
+		List<String> prf_documents = new ArrayList<String>(); 
+		for (YahooQuestion q : questions) {
+			String question = q.Content;
+			String answer = q.ChosenAnswer;
+			all_documents.add(question);
+			all_documents.add(answer);
+			prf_documents.add(answer);
+		}
+		
+//		for (TermWithFrequency twf : TermRankingFunction.getTf(collection)) {
+//			System.out.println(twf);
+//		}
+		
+		for (TermWithFrequency twf : TermRankingFunction.getTf(collection)) {
+			int df = TermRankingFunction.getDf(prf_documents, twf.term);
+			
+			System.out.println("The df of " + twf.term.trim() + " is: " + df);
+		}
 	}
+
 
 }
