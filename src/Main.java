@@ -11,18 +11,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		List<YahooQuestion> questions = YahooAnswerHelper
-				.searchQuestions("Jackie Robinson major league debut");
-
-//		for (YahooQuestion q : questions) {
-//			System.out.println("[Subject]");
-//			System.out.println(q.Subject);
-//			System.out.println("[Content]");
-//			System.out.println(q.Content);
-//			System.out.println("[Selected Answer]");
-//			System.out.println(q.ChosenAnswer);
-//			System.out
-//					.println("----------------------------------------------------------");
-//		}
+				.searchQuestions("prime factor");
 
 		String corpus = "";
 
