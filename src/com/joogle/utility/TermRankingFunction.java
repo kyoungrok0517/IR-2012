@@ -7,8 +7,6 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 public class TermRankingFunction {
-	private static PorterStemmer stemmer = new PorterStemmer();
-
 	public static double getRocchioWeight(String term, String doc,
 			List<String> collection) {
 		Map<String, Integer> doc_vector = getDocumentVector(doc);
@@ -18,6 +16,8 @@ public class TermRankingFunction {
 			tf = doc_vector.get(term);
 		}
 
+		// System.out.println(term + ":" + tf);
+
 		int df = 0;
 		for (String d : collection) {
 			Map<String, Integer> dv = getDocumentVector(d);
@@ -26,7 +26,7 @@ public class TermRankingFunction {
 			}
 		}
 
-		return ((1 + Math.log(tf)) * (1 / df));
+		return ((1 + Math.log(tf)) * Math.log10(collection.size() / df + 1));
 	}
 
 	public static List<String> getMergedDocumentVector(String document) {
@@ -42,7 +42,7 @@ public class TermRankingFunction {
 
 	public static Map<String, Integer> getDocumentVector(String document) {
 		Map<String, Integer> term_vector = new HashMap<String, Integer>();
-		List<String> terms = tokenize(document);
+		List<String> terms = Tokenizer.tokenize(document);
 
 		for (String token : terms) {
 			if (!term_vector.containsKey(token)) {
@@ -53,23 +53,5 @@ public class TermRankingFunction {
 		}
 
 		return term_vector;
-	}
-
-	private static List<String> tokenize(String text) {
-		// TODO: 여기서 stopword 제거, 소문자화, stemming 등을 모두 처리
-		StringTokenizer tokenizer = new StringTokenizer(text,
-				" \"'()<>{}[]~`!@#$%^&*_-=+/|,.;:\t\n\r");
-
-		List<String> tokens = new ArrayList<String>();
-		while (tokenizer.hasMoreTokens()) {
-			String t = tokenizer.nextToken().toLowerCase();
-			stemmer.add(t.toCharArray(), t.length());
-			stemmer.stem();
-			String stemmed = stemmer.toString();
-			
-			tokens.add(stemmed);
-		}
-
-		return tokens;
 	}
 }
