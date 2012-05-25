@@ -15,7 +15,7 @@ public class TermWithWeight implements Comparable<TermWithWeight> {
 
 	@Override
 	public int compareTo(TermWithWeight t) {
-		return (int)(t.freq - this.freq);
+		return (int)(Math.signum(t.freq - this.freq));
 	}
 
 	public String toString() {

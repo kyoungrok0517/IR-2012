@@ -21,7 +21,7 @@ public class Main {
 	public static void main(String[] args) {
 		stopwords = populateStopWords("./resource/english_stopword_v2.txt");
 
-		String tokenized_query = getQuery("what about alexander graham bell");
+		String tokenized_query = getQuery("how was the black plague stopped?");
 		
 		System.out.println("Query:" + tokenized_query);
 		
