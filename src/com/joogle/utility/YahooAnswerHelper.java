@@ -1,3 +1,4 @@
+package com.joogle.utility;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -114,6 +115,7 @@ public class YahooAnswerHelper {
 		params.add(new BasicNameValuePair("appid", API_SECRET));
 		params.add(new BasicNameValuePair("query", query));
 		params.add(new BasicNameValuePair("output", "json"));
+		params.add(new BasicNameValuePair("results", "30"));
 		String query_string = URLEncodedUtils.format(params, "UTF-8");
 
 		// build URL for question search

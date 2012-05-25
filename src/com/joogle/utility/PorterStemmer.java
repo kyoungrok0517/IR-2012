@@ -46,7 +46,7 @@ import java.io.IOException;
  * the various stem(something) methods.
  */
 
-class PorterStemmer {
+public class PorterStemmer {
 	private char[] b;
 	private int i, /* offset into b */
 	i_end, /* offset to end of stemmed word */

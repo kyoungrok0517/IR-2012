@@ -1,10 +1,11 @@
 import java.util.List;
 
-import com.joogle.model.YahooAnswer;
 import com.joogle.model.YahooQuestion;
-import com.joogle.utility.URLExtractor;
+import com.joogle.utility.PorterStemmer;
+import com.joogle.utility.YahooAnswerHelper;
 
 public class Main {
+	private static PorterStemmer stemmer = new PorterStemmer();
 
 	/**
 	 * @param args
@@ -13,17 +14,6 @@ public class Main {
 		List<YahooQuestion> questions = YahooAnswerHelper
 				.searchQuestions("prime factor");
 
-		String corpus = "";
-
-		for (YahooQuestion q : questions) {
-			corpus += (" " + q.Subject);
-			corpus += (" " + q.Content);
-			corpus += (" " + q.ChosenAnswer);
-		}
-		
-//		URLExtractor.extractURL(corpus);
-
-		System.out.println(corpus);
 	}
 
 }
