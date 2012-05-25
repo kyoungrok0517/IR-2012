@@ -1,11 +1,13 @@
 package com.joogle.termselector;
 
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import com.joogle.model.TermWithFrequency;
 import com.joogle.utility.PorterStemmer;
 
 public class TfIdfSelector implements TermSelector {
@@ -15,8 +17,6 @@ public class TfIdfSelector implements TermSelector {
 	public List<String> selectTerm(String query, String corpus) {
 		Map<String, Integer> term_with_count = new HashMap<String, Integer>();
 		StringTokenizer tokenizer = new StringTokenizer(corpus);
-		
-		// TODO: 특수문자 제거 기능 구현 필요 
 		
 		while (tokenizer.hasMoreTokens()) {
 			String token = tokenizer.nextToken();
@@ -33,8 +33,17 @@ public class TfIdfSelector implements TermSelector {
 			}
 		}
 
+		List<TermWithFrequency> terms = new ArrayList<TermWithFrequency>();
+		
 		for (String term : term_with_count.keySet()) {
-			System.out.println(term + ": " + term_with_count.get(term));
+			TermWithFrequency twf = new TermWithFrequency(term, term_with_count.get(term));
+			terms.add(twf);
+		}
+		
+		Collections.sort(terms);
+		
+		for (TermWithFrequency term : terms) {
+			System.out.println(term);
 		}
 		
 		return null;
