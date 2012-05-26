@@ -22,7 +22,7 @@ public class Main {
 	public static void main(String[] args) {
 		stopwords = populateStopWords("./resource/english_stopword_v2.txt");
 
-		String tokenized_query = getQuery(" titanic what went wrong");
+		String tokenized_query = getNormalizedQuery("titanic what went wrong");
 
 		System.out.println("Query: " + tokenized_query);
 
@@ -70,7 +70,7 @@ public class Main {
 		}
 	}
 
-	private static String getQuery(String query) {
+	private static String getNormalizedQuery(String query) {
 		StringTokenizer tokenizer = new StringTokenizer(query,
 				" \"()<>{}[]~`!@#$%^?&*_-=+/|,.;:\t\n\r1234567890");
 
