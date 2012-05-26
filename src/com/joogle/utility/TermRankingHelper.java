@@ -57,8 +57,9 @@ public class TermRankingHelper {
 						df++;
 					}
 				}
-
-				weight += ((1 + tf) * (1 / df));
+				if (tf != 0) {					
+					weight += ((1 + Math.log(tf)) * Math.log10(collection.size() / df + 1));
+				}
 			}
 		}
 

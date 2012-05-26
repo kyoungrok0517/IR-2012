@@ -22,7 +22,7 @@ public class Main {
 	public static void main(String[] args) {
 		stopwords = populateStopWords("./resource/english_stopword_v2.txt");
 
-		String tokenized_query = getNormalizedQuery("titanic what went wrong");
+		String tokenized_query = getNormalizedQuery("are sun beds safe");
 
 		System.out.println("Query: " + tokenized_query);
 
