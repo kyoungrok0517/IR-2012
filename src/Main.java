@@ -23,7 +23,7 @@ public class Main {
 	public static void main(String[] args) {
 		stopwords = populateStopWords("./resource/english_stopword_v2.txt");
 
-		String tokenized_query = getNormalizedQuery(" How does a hygrometer measure the humidity in the atmosphere?");
+		String tokenized_query = getNormalizedQuery("can babies eat honey?");
 
 		System.out.println("Query: " + tokenized_query);
 
