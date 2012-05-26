@@ -15,11 +15,11 @@ public class Tokenizer {
 		List<String> tokens = new ArrayList<String>();
 		while (tokenizer.hasMoreTokens()) {
 			String t = tokenizer.nextToken().toLowerCase();
-			stemmer.add(t.toCharArray(), t.length());
-			stemmer.stem();
-			String stemmed = stemmer.toString();
+//			stemmer.add(t.toCharArray(), t.length());
+//			stemmer.stem();
+//			String stemmed = stemmer.toString();
 
-			tokens.add(stemmed);
+			tokens.add(t);
 		}
 
 		return tokens;
