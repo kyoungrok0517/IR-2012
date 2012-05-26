@@ -35,15 +35,8 @@ public class TermRankingHelper {
 		this.stopwords = stopwords;
 	}
 
+	// 일단은 Rocchio와 동일
 	public double getRSVWeight(String term) {
-		return 0.0;
-	}
-
-	public double getRocchioWeight(String term) {
-		if (stopwords.contains(term)) {
-			return 0.0;
-		}
-
 		double weight = 0.0;
 
 		for (Map<String, Integer> prf_doc_vector : prf_doc_vectors) {
@@ -57,8 +50,34 @@ public class TermRankingHelper {
 						df++;
 					}
 				}
-				if (tf != 0) {					
-					weight += ((1 + Math.log(tf)) * Math.log10(collection.size() / df + 1));
+				if (tf != 0) {
+					// TODO 수정 필요
+					weight += ((1 + Math.log(tf)) * Math.log10(collection
+							.size() / df + 1));
+				}
+			}
+		}
+
+		return weight;
+	}
+
+	public double getRocchioWeight(String term) {
+		double weight = 0.0;
+
+		for (Map<String, Integer> prf_doc_vector : prf_doc_vectors) {
+			if (!prf_doc_vector.containsKey(term)) {
+				continue;
+			} else {
+				int tf = prf_doc_vector.get(term);
+				int df = 0;
+				for (Map<String, Integer> doc_vector : collection_doc_vectors) {
+					if (doc_vector.containsKey(term)) {
+						df++;
+					}
+				}
+				if (tf != 0) {
+					weight += ((1 + Math.log(tf)) * Math.log10(collection
+							.size() / df + 1));
 				}
 			}
 		}

@@ -18,6 +18,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.joogle.model.YahooAnswer;
 import com.joogle.model.YahooQuestion;
 
@@ -40,6 +41,7 @@ public class YahooAnswerHelper {
 		HttpGet method = new HttpGet(url);
 		List<YahooAnswer> answers = new ArrayList<YahooAnswer>();
 
+		String string_response = "";
 		try {
 			HttpResponse response = client.execute(method);
 			HttpEntity entity = response.getEntity();
@@ -50,7 +52,7 @@ public class YahooAnswerHelper {
 				if (code >= 300) { // the server responded with error
 					System.err.println("Failed");
 				} else {
-					String string_response = EntityUtils.toString(entity);
+					string_response = EntityUtils.toString(entity);
 					JsonObject json_response = parser.parse(string_response)
 							.getAsJsonObject();
 					JsonObject json_all = json_response.get("all")
@@ -67,6 +69,8 @@ public class YahooAnswerHelper {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (JsonSyntaxException e) {
+			System.err.println(string_response);
 		}
 
 		return answers;
