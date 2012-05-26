@@ -23,7 +23,7 @@ public class Main {
 	public static void main(String[] args) {
 		stopwords = populateStopWords("./resource/english_stopword_v2.txt");
 
-		String tokenized_query = getNormalizedQuery("are sun beds safe");
+		String tokenized_query = getNormalizedQuery(" How does a hygrometer measure the humidity in the atmosphere?");
 
 		System.out.println("Query: " + tokenized_query);
 
@@ -31,8 +31,8 @@ public class Main {
 				.searchQuestions(tokenized_query);
 
 		// build the collection & PRF documents
-		// Collection: retrieved
-		//TODO: 몇 천개라도 collection을 모아두는게 좋을 듯. 
+		// Collection: retrieved question + all answers
+		// prf_documents: chosen questions only
 		List<String> collection = new ArrayList<String>();
 		List<String> prf_docs = new ArrayList<String>();
 		for (YahooQuestion question : questions) {
