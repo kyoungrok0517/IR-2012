@@ -20,6 +20,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="library/http/httpmime-4.2.jar"/>
 	<classpathentry kind="lib" path="library/http/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="library/gson-2.2.1.jar"/>
+	<classpathentry kind="lib" path="library/json/gson-2.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

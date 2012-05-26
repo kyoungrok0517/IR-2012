@@ -31,6 +31,7 @@ public class Main {
 
 		// build the collection & PRF documents
 		// Collection: retrieved
+		//TODO: 몇 천개라도 collection을 모아두는게 좋을 듯. 
 		List<String> collection = new ArrayList<String>();
 		List<String> prf_docs = new ArrayList<String>();
 		for (YahooQuestion q : questions) {
